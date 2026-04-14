@@ -451,6 +451,7 @@ a:hover {
 
 .pub-thumb {
   width: 160px;
+  max-width: 160px;
   height: auto;
   border-radius: var(--radius-sm);
   flex-shrink: 0;
@@ -748,13 +749,11 @@ a:hover {
 
   .pub-item {
     padding: 16px;
-    flex-direction: column;
-    align-items: flex-start;
   }
 
   .pub-thumb {
-    width: 100%;
-    max-width: 200px;
+    width: 100px;
+    max-width: 100px;
   }
 
   .site-footer {
