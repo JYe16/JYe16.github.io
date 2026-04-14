@@ -438,12 +438,29 @@ a:hover {
 
 /* --- Publications --- */
 .pub-item {
+  display: flex;
+  gap: 20px;
+  align-items: center;
   padding: 20px 24px;
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-card);
   transition: all var(--duration-normal) var(--ease-out);
+}
+
+.pub-thumb {
+  width: 160px;
+  height: auto;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+  object-fit: contain;
+  border: 1px solid var(--border-color);
+}
+
+.pub-body {
+  flex: 1;
+  min-width: 0;
 }
 
 .pub-item:hover {
@@ -731,6 +748,13 @@ a:hover {
 
   .pub-item {
     padding: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .pub-thumb {
+    width: 100%;
+    max-width: 200px;
   }
 
   .site-footer {
