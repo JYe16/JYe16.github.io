@@ -550,9 +550,9 @@ a:hover {
 }
 
 .pub-tag-accepted {
-  background: rgba(69, 140, 102, 0.14);
-  color: #2f6b4f;
-  border-color: rgba(69, 140, 102, 0.18);
+  background: rgba(100, 196, 136, 0.2);
+  color: #8fe0aa;
+  border-color: rgba(100, 196, 136, 0.34);
 }
 
 .pub-tag-review {
