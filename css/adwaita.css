@@ -550,7 +550,6 @@ a:hover {
 .pub-award {
   display: inline-flex;
   align-items: center;
-  margin-top: 8px;
   padding: 6px 12px;
   border-radius: 999px;
   background: linear-gradient(135deg, #b7791f 0%, #f6d365 100%);
