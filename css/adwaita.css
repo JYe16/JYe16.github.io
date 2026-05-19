@@ -519,15 +519,18 @@ a:hover {
 }
 
 .pub-links a,
-.pub-tag {
+.pub-tag,
+.pub-award {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 4px 10px;
+  min-height: 42px;
+  padding: 0 20px;
   font-size: 12px;
-  font-weight: 500;
-  border-radius: 6px;
+  font-weight: 700;
+  border-radius: 999px;
   transition: all var(--duration-fast) var(--ease-out);
+  box-sizing: border-box;
 }
 
 .pub-links a {
@@ -543,19 +546,24 @@ a:hover {
 }
 
 .pub-tag {
+  border: 1px solid transparent;
+}
+
+.pub-tag-accepted {
+  background: rgba(69, 140, 102, 0.14);
+  color: #2f6b4f;
+  border-color: rgba(69, 140, 102, 0.18);
+}
+
+.pub-tag-review {
   background: rgba(141, 159, 170, 0.1);
   color: var(--morandi-blue);
+  border-color: rgba(141, 159, 170, 0.14);
 }
 
 .pub-award {
-  display: inline-flex;
-  align-items: center;
-  padding: 6px 12px;
-  border-radius: 999px;
   background: linear-gradient(135deg, #b7791f 0%, #f6d365 100%);
   color: #3b2200;
-  font-size: 12px;
-  font-weight: 700;
   letter-spacing: 0.02em;
   box-shadow: 0 8px 18px rgba(183, 121, 31, 0.22);
 }
