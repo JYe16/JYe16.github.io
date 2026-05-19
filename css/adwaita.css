@@ -499,6 +499,19 @@ a:hover {
   margin-bottom: 10px;
 }
 
+.pub-thumb-link {
+  display: block;
+}
+
+.pub-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.pub-title a:hover {
+  color: var(--accent);
+}
+
 .pub-links {
   display: flex;
   flex-wrap: wrap;
@@ -532,6 +545,20 @@ a:hover {
 .pub-tag {
   background: rgba(141, 159, 170, 0.1);
   color: var(--morandi-blue);
+}
+
+.pub-award {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 8px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #b7791f 0%, #f6d365 100%);
+  color: #3b2200;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  box-shadow: 0 8px 18px rgba(183, 121, 31, 0.22);
 }
 
 /* --- Education / Experience --- */
