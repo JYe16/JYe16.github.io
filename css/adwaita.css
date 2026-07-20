@@ -524,8 +524,8 @@ a:hover {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  min-height: 42px;
-  padding: 0 20px;
+  min-height: 30px;
+  padding: 0 14px;
   font-size: 12px;
   font-weight: 700;
   border-radius: 999px;
@@ -549,10 +549,29 @@ a:hover {
   border: 1px solid transparent;
 }
 
+/* Accepted — subtle outlined pill (in progress toward publication) */
 .pub-tag-accepted {
+  background: rgba(100, 196, 136, 0.16);
+  color: #2f6b46;
+  border-color: rgba(100, 196, 136, 0.34);
+}
+
+[data-theme="dark"] .pub-tag-accepted {
   background: rgba(100, 196, 136, 0.2);
   color: #8fe0aa;
-  border-color: rgba(100, 196, 136, 0.34);
+}
+
+/* Published — filled solid pill (stronger; clearly distinct from Accepted) */
+.pub-tag-published {
+  background: #4b7a5c;
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(75, 122, 92, 0.22);
+}
+
+[data-theme="dark"] .pub-tag-published {
+  background: #7cab88;
+  color: #1c2419;
 }
 
 .pub-tag-review {
@@ -616,6 +635,20 @@ a:hover {
   font-size: 12.5px;
   color: var(--text-tertiary);
   margin-top: 2px;
+}
+
+/* --- Visitor Map --- */
+.visitor-map-card {
+  max-width: 400px;
+  width: 100%;
+  padding: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
 }
 
 /* --- Footer --- */
@@ -808,6 +841,20 @@ a:hover {
 
   .section-header h2 {
     font-size: 16px;
+  }
+}
+
+/* --- Reduced Motion --- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .anim-fade-up, .anim-fade-left, .anim-fade-right, .anim-scale-in {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
 

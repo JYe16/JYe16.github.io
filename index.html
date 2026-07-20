@@ -11,14 +11,22 @@
   <meta property="og:url" content="https://jye16.github.io/">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Zhankai Ye">
-  <meta name="twitter:description" content="Computer Science Ph.D. Student at Florida State University">
+  <meta name="twitter:description" content="Computer Science Ph.D. Candidate at Florida State University">
   <link rel="shortcut icon" type="image/png" href="/freelancer.png">
   <link rel="icon" type="image/png" href="/freelancer.png">
   <link rel="apple-touch-icon" href="/freelancer.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/adwaita.css?v=3">
+  <link rel="stylesheet" href="/css/adwaita.css?v=4">
+  <noscript>
+    <style>
+      .anim-fade-up, .anim-fade-left, .anim-fade-right, .anim-scale-in {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    </style>
+  </noscript>
   <script src="/js/main.js"></script>
   <script type="application/ld+json">
   {
@@ -26,7 +34,7 @@
     "@type": "Person",
     "name": "Zhankai Ye",
     "url": "https://jye16.github.io/",
-    "jobTitle": "Ph.D. Student",
+    "jobTitle": "Ph.D. Candidate",
     "affiliation": {
       "@type": "Organization",
       "name": "Florida State University"
@@ -79,6 +87,7 @@
         <p class="bio">
           I am a Computer Science Ph.D. candidate at Florida State University, advised by <a href="https://xinliulab.github.io/" target="_blank" rel="noopener noreferrer">Dr. Xin Liu</a>.
           My research lies at the intersection of trustworthy AI, wireless/RF sensing, edge intelligence, and secure large language model deployment. I develop privacy-preserving and resource-efficient AI systems that enable machines to perceive, understand, and protect human-centered physical environments.
+        </p>
         <div class="hero-links">
           <a href="mailto:zy22b@fsu.edu">
             <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
@@ -154,7 +163,7 @@
             <div class="pub-authors">Bofan Li, <span class="me">Zhankai Ye (Co-First Author)</span>, Weikuan Yu, Yongning Tang, Xin Liu</div>
             <div class="pub-venue">The 47th IEEE Symposium on Security and Privacy (S&amp;P) 2026</div>
             <div class="pub-links">
-              <span class="pub-tag pub-tag-accepted">Published</span>
+              <span class="pub-tag pub-tag-published">Published</span>
               <div class="pub-award">Distinguished Artifact Award</div>
             </div>
           </div>
@@ -168,7 +177,7 @@
             <div class="pub-authors"><span class="me">Zhankai Ye</span>, Shuoqiu Li, Bofan Li, Yili Ren, Bo Mei, Shangqian Gao, Xin Liu</div>
             <div class="pub-venue">The 20th IEEE International Conference on Automatic Face and Gesture Recognition (FG) 2026</div>
             <div class="pub-links">
-              <span class="pub-tag pub-tag-accepted">Published</span>
+              <span class="pub-tag pub-tag-published">Published</span>
             </div>
           </div>
         </div>
@@ -300,8 +309,18 @@
         <div class="section-line"></div>
       </div>
       <div style="display:flex;justify-content:center;">
-        <div style="max-width:400px;width:100%;">
-          <script type="text/javascript" id="mapmyvisitors" src="//mapmyvisitors.com/map.js?d=XqmoEh-5JVxembaAJcJapGxYagsja-NmGrEghnxSBC0&cl=ffffff&w=a"></script>
+        <div class="visitor-map-card">
+          <script type="text/javascript">
+            (function () {
+              var theme = document.documentElement.getAttribute('data-theme');
+              var cl = theme === 'dark' ? '2a2724' : 'ffffff';
+              document.write(
+                '<script type="text/javascript" id="mapmyvisitors" ' +
+                'src="//mapmyvisitors.com/map.js?d=XqmoEh-5JVxembaAJcJapGxYagsja-NmGrEghnxSBC0&cl=' +
+                cl + '&w=a"><\/script>'
+              );
+            })();
+          </script>
         </div>
       </div>
     </section>
