@@ -256,6 +256,10 @@
       <div class="news-list stagger-children">
         <div class="news-item anim-fade-left">
           <span class="news-date">Reviewer</span>
+          <span class="news-text">IEEE Internet Computing, 2026</span>
+        </div>
+        <div class="news-item anim-fade-left">
+          <span class="news-date">Reviewer</span>
           <span class="news-text">International Conference on Bioinformatics and Biomedicine (IEEE BIBM) 2025</span>
         </div>
       </div>
@@ -314,10 +318,19 @@
             (function () {
               var theme = document.documentElement.getAttribute('data-theme');
               var cl = theme === 'dark' ? '2a2724' : 'ffffff';
+              var card = document.currentScript.parentElement;
+              var cardStyle = window.getComputedStyle(card);
+              var mapWidth = Math.floor(
+                card.getBoundingClientRect().width -
+                parseFloat(cardStyle.paddingLeft) -
+                parseFloat(cardStyle.paddingRight) -
+                parseFloat(cardStyle.borderLeftWidth) -
+                parseFloat(cardStyle.borderRightWidth)
+              );
               document.write(
                 '<script type="text/javascript" id="mapmyvisitors" ' +
-                'src="//mapmyvisitors.com/map.js?d=XqmoEh-5JVxembaAJcJapGxYagsja-NmGrEghnxSBC0&cl=' +
-                cl + '&w=a"><\/script>'
+                'src="https://mapmyvisitors.com/map.js?d=XqmoEh-5JVxembaAJcJapGxYagsja-NmGrEghnxSBC0&cl=' +
+                cl + '&w=' + mapWidth + '"><\/script>'
               );
             })();
           </script>
