@@ -515,6 +515,7 @@ a:hover {
 .pub-links {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 6px;
 }
 
@@ -547,10 +548,14 @@ a:hover {
 
 .pub-links .pub-icon-link {
   width: 30px;
+  height: 30px;
+  min-height: 30px;
+  flex: 0 0 30px;
   padding: 0;
   justify-content: center;
   background: transparent;
   border-color: transparent;
+  overflow: hidden;
 }
 
 .pub-links .pub-icon-link:hover {
@@ -560,14 +565,20 @@ a:hover {
 
 .pub-icon-link img {
   display: block;
-  width: 19px;
-  height: 19px;
+  width: 18px;
+  height: 18px;
+  max-width: 18px;
+  max-height: 18px;
+  flex: 0 0 18px;
   object-fit: contain;
 }
 
 .pub-icon-link-hf img {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
+  max-width: 20px;
+  max-height: 20px;
+  flex-basis: 20px;
 }
 
 [data-theme="dark"] .pub-icon-link-github img {
