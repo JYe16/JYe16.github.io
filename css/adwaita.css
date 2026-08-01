@@ -545,6 +545,31 @@ a:hover {
   color: var(--bg-card);
 }
 
+.pub-links .pub-icon-link {
+  width: 30px;
+  padding: 0;
+  justify-content: center;
+}
+
+.pub-icon-link svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.pub-icon-link-hf svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.pub-icon-link-hf svg circle {
+  fill: currentColor;
+  stroke: none;
+}
+
 .pub-tag {
   border: 1px solid transparent;
 }
