@@ -549,25 +549,29 @@ a:hover {
   width: 30px;
   padding: 0;
   justify-content: center;
+  background: transparent;
+  border-color: transparent;
 }
 
-.pub-icon-link svg {
-  width: 16px;
-  height: 16px;
-  fill: currentColor;
+.pub-links .pub-icon-link:hover {
+  background: var(--accent-subtle);
+  border-color: transparent;
 }
 
-.pub-icon-link-hf svg {
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+.pub-icon-link img {
+  display: block;
+  width: 19px;
+  height: 19px;
+  object-fit: contain;
 }
 
-.pub-icon-link-hf svg circle {
-  fill: currentColor;
-  stroke: none;
+.pub-icon-link-hf img {
+  width: 22px;
+  height: 22px;
+}
+
+[data-theme="dark"] .pub-icon-link-github img {
+  filter: invert(1);
 }
 
 .pub-tag {
