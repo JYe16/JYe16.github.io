@@ -348,18 +348,14 @@ a:hover {
   flex-shrink: 0;
 }
 
-.hero-links a img {
+.hero-github-icon {
   display: block;
   width: 15px;
   height: 15px;
-  max-width: 15px;
-  max-height: 15px;
-  object-fit: contain;
   flex: 0 0 15px;
-}
-
-[data-theme="dark"] .hero-link-github img {
-  filter: invert(1);
+  background-color: currentColor;
+  -webkit-mask: url("/icons/github.svg?v=3") center / contain no-repeat;
+  mask: url("/icons/github.svg?v=3") center / contain no-repeat;
 }
 
 /* --- Section --- */
