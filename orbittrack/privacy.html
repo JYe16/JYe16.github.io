@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>OrbitTrack Privacy Policy</title>
+<style>
+  :root { color-scheme: light dark; --fg: #1c1c1e; --muted: #6b6b70; --bg: #ffffff; --rule: #e3e3e6; --accent: #5c7288; }
+  @media (prefers-color-scheme: dark) {
+    :root { --fg: #ececf0; --muted: #9a9aa2; --bg: #16171a; --rule: #2c2d31; --accent: #7f91a5; }
+  }
+  body { margin: 0 auto; padding: 3rem 1.25rem 5rem; max-width: 44rem;
+         background: var(--bg); color: var(--fg);
+         font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; }
+  h1 { font-size: 1.9rem; margin: 0 0 .35rem; letter-spacing: -.02em; }
+  h2 { font-size: 1.15rem; margin: 2.4rem 0 .6rem; letter-spacing: -.01em; }
+  .updated { color: var(--muted); font-size: .9rem; margin: 0 0 2rem; }
+  hr { border: 0; border-top: 1px solid var(--rule); margin: 3.5rem 0 2.5rem; }
+  ul { padding-left: 1.2rem; }
+  li { margin: .4rem 0; }
+  a { color: var(--accent); }
+  .lead { font-size: 1.05rem; }
+  code { font-size: .9em; background: color-mix(in srgb, var(--fg) 8%, transparent);
+         padding: .1em .35em; border-radius: 4px; }
+</style>
+</head>
+<body>
+
+<h1>OrbitTrack Privacy Policy</h1>
+<p class="updated">Last updated: August 10, 2026</p>
+
+<p class="lead">OrbitTrack does not collect, store, or receive any of your personal data. There
+are no analytics, no advertising, no tracking, and no third-party SDKs in the app. Everything
+below explains where your data actually goes.</p>
+
+<h2>Two modes, two destinations</h2>
+<p><strong>Local mode.</strong> Your tasks are your Apple Reminders, and timed sessions are
+written to a dedicated calendar in the Apple Calendar app. This data stays on your device and
+in your own iCloud account. It is never sent to us or to anyone else.</p>
+<p><strong>Server mode.</strong> You enter the address of an OrbitTrack/CalDAV server and an
+access token. Your tasks, plans, and timed sessions are sent only to that address. If you host
+that server yourself, your data never reaches us. We do not operate a service that collects
+data from OrbitTrack users, and we have no access to servers you run.</p>
+
+<h2>Health and motion data</h2>
+<p>In Server mode only, and only if you grant permission, OrbitTrack reads:</p>
+<ul>
+  <li><strong>Sleep data</strong> from Apple Health, to record sleep as calendar entries.</li>
+  <li><strong>Motion activity</strong> from the system, to detect driving periods.</li>
+</ul>
+<p>Both are written only to the server address you configured. They are not sent anywhere
+else, and OrbitTrack does not write your health data to any third party. You can revoke these
+permissions at any time in iOS Settings.</p>
+
+<h2>Location</h2>
+<p>If you grant location access, OrbitTrack sends your approximate location (kilometer
+accuracy) to Apple's WeatherKit service to look up current weather. This is used for one
+purpose: showing a weather icon that matches your actual conditions on the widget and the
+watch face complication. Your location is not stored, not kept in any history, and not sent
+to your OrbitTrack server. Apple's handling of WeatherKit requests is governed by
+<a href="https://www.apple.com/legal/privacy/">Apple's privacy policy</a>.</p>
+
+<h2>AI summaries</h2>
+<p>OrbitTrack's written summaries of your time are generated <strong>on your device</strong>
+using Apple's built-in on-device language model. The text of your tasks and sessions is not
+sent to any server, ours or anyone else's, for this feature.</p>
+
+<h2>Credentials</h2>
+<p>Your server address and access token are stored in the iOS Keychain on your device. They
+are sent only to the server you configured, to authenticate your own requests.</p>
+
+<h2>Data deletion</h2>
+<p>We hold no data about you, so there is nothing for us to delete. To remove data OrbitTrack
+created: delete the entries from Apple Reminders and Apple Calendar (Local mode), or from your
+own server (Server mode). Deleting the app removes its local cache and stored credentials.</p>
+
+<h2>Children</h2>
+<p>OrbitTrack is not directed at children and does not knowingly collect information from
+anyone, of any age.</p>
+
+<h2>Changes</h2>
+<p>If this policy changes, the updated version will be posted at this address with a new date
+at the top.</p>
+
+<h2>Contact</h2>
+<p>Questions about privacy in OrbitTrack: <a href="mailto:jackie.ye.97@icloud.com">jackie.ye.97@icloud.com</a></p>
+
+<hr />
+
+<h1>OrbitTrack 隐私政策</h1>
+<p class="updated">最后更新:2026 年 8 月 10 日</p>
+
+<p class="lead">OrbitTrack 不收集、不存储、也不接收你的任何个人数据。app 里没有统计分析、
+没有广告、没有追踪,也没有任何第三方 SDK。下面说清楚你的数据实际去了哪里。</p>
+
+<h2>两种模式,两个去处</h2>
+<p><strong>本地模式。</strong>你的任务就是系统「提醒事项」,计时记录写进「日历」app 里一个
+专用日历。这些数据留在你的设备和你自己的 iCloud 账户里,不会发给我们,也不会发给任何人。</p>
+<p><strong>服务器模式。</strong>你填入自己的 OrbitTrack/CalDAV 服务器地址和访问令牌,任务、
+计划、计时记录只发往这一个地址。如果那台服务器是你自己搭的,数据根本不会到我们手里。我们
+不运营任何收集 OrbitTrack 用户数据的服务,也无法访问你自己运行的服务器。</p>
+
+<h2>健康与运动数据</h2>
+<p>仅在服务器模式下,且仅在你授权后,OrbitTrack 会读取:</p>
+<ul>
+  <li>「健康」中的<strong>睡眠数据</strong>,用于把睡眠记录成日历条目。</li>
+  <li>系统的<strong>运动活动分类</strong>,用于识别行车区间。</li>
+</ul>
+<p>两者都只写入你配置的那个服务器地址,不发往其他任何地方,OrbitTrack 也不会把你的健康数据
+交给任何第三方。你随时可以在系统「设置」里收回这些权限。</p>
+
+<h2>位置</h2>
+<p>如果你授权定位,OrbitTrack 会把你的大致位置(公里级精度)发给 Apple 的 WeatherKit 服务
+查询当前天气。用途只有一个:让小组件和表盘复杂功能上的天气图标和你所在地的实际天气对得上。
+你的位置不会被保存、不留历史,也不会发往你的 OrbitTrack 服务器。Apple 对 WeatherKit 请求的
+处理适用 <a href="https://www.apple.com/legal/privacy/">Apple 的隐私政策</a>。</p>
+
+<h2>AI 解读</h2>
+<p>OrbitTrack 对你时间安排的文字解读是<strong>在你的设备上</strong>用 Apple 内置的端侧语言
+模型生成的。这个功能不会把你的任务和计时内容发给任何服务器,包括我们的。</p>
+
+<h2>登录凭据</h2>
+<p>你的服务器地址和访问令牌存在设备的钥匙串(Keychain)里,只会发往你配置的那个服务器,
+用于验证你自己的请求。</p>
+
+<h2>数据删除</h2>
+<p>我们手上没有你的任何数据,所以没有什么需要我们删除。要清除 OrbitTrack 产生的数据:在
+「提醒事项」和「日历」里删除相应条目(本地模式),或在你自己的服务器上删除(服务器模式)。
+删除 app 会一并清掉本地缓存和已保存的凭据。</p>
+
+<h2>儿童</h2>
+<p>OrbitTrack 不面向儿童,也不会在知情的情况下收集任何年龄段用户的信息。</p>
+
+<h2>政策变更</h2>
+<p>本政策如有变更,新版本会发布在这个地址,并更新顶部的日期。</p>
+
+<h2>联系方式</h2>
+<p>关于 OrbitTrack 隐私的问题请联系:<a href="mailto:jackie.ye.97@icloud.com">jackie.ye.97@icloud.com</a></p>
+
+</body>
+</html>
