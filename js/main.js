@@ -168,6 +168,7 @@
     if (!list || !toggle) return;
 
     const items = list.querySelectorAll('.news-item');
+    const extraItems = Array.prototype.slice.call(items, 5);
     if (items.length <= 5) {
       toggle.parentElement.hidden = true;
       list.classList.remove('is-collapsed');
@@ -177,8 +178,67 @@
     toggle.addEventListener('click', function () {
       const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
       toggle.setAttribute('aria-expanded', String(!isExpanded));
-      list.classList.toggle('is-collapsed', isExpanded);
       toggle.querySelector('.news-toggle-label').textContent = isExpanded ? 'Show more' : 'Show less';
+
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !list.animate) {
+        list.classList.toggle('is-collapsed', isExpanded);
+        return;
+      }
+
+      toggle.disabled = true;
+      const startHeight = list.offsetHeight;
+      let endHeight;
+
+      if (isExpanded) {
+        const fifthItem = items[4];
+        endHeight = fifthItem.offsetTop + fifthItem.offsetHeight;
+      } else {
+        list.classList.remove('is-collapsed');
+        endHeight = list.scrollHeight;
+      }
+
+      list.style.overflow = 'hidden';
+      const listAnimation = list.animate(
+        [
+          { height: startHeight + 'px' },
+          { height: endHeight + 'px' }
+        ],
+        {
+          duration: isExpanded ? 320 : 420,
+          easing: 'cubic-bezier(0, 0, 0.2, 1)',
+          fill: 'both'
+        }
+      );
+
+      const itemAnimations = extraItems.map(function (item, index) {
+        return item.animate(
+          isExpanded
+            ? [
+                { opacity: 1, transform: 'translateY(0)' },
+                { opacity: 0, transform: 'translateY(-8px)' }
+              ]
+            : [
+                { opacity: 0, transform: 'translateY(-8px)' },
+                { opacity: 1, transform: 'translateY(0)' }
+              ],
+          {
+            duration: isExpanded ? 180 : 300,
+            delay: isExpanded ? 0 : 45 + index * 28,
+            easing: 'cubic-bezier(0, 0, 0.2, 1)',
+            fill: 'both'
+          }
+        );
+      });
+
+      Promise.all([listAnimation.finished].concat(itemAnimations.map(function (animation) {
+        return animation.finished;
+      }))).then(function () {
+        list.classList.toggle('is-collapsed', isExpanded);
+        list.style.overflow = '';
+        listAnimation.cancel();
+        itemAnimations.forEach(function (animation) { animation.cancel(); });
+        toggle.disabled = false;
+      });
     });
   }
 

@@ -516,6 +516,10 @@ a:hover {
   transform: rotate(180deg);
 }
 
+.news-toggle:disabled {
+  cursor: default;
+}
+
 .news-item {
   display: flex;
   gap: 16px;
