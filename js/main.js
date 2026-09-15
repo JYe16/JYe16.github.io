@@ -61,6 +61,13 @@
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
+            entry.target.addEventListener('transitionend', function settleMotion(event) {
+              if (event.target === entry.target &&
+                  (event.propertyName === 'opacity' || event.propertyName === 'transform')) {
+                entry.target.classList.add('motion-settled');
+                entry.target.removeEventListener('transitionend', settleMotion);
+              }
+            });
             observer.unobserve(entry.target);
           }
         });
@@ -198,6 +205,9 @@
       }
 
       list.style.overflow = 'hidden';
+      const motionEasing = isExpanded
+        ? 'cubic-bezier(0.4, 0, 1, 1)'
+        : 'cubic-bezier(0, 0, 0.2, 1)';
       const listAnimation = list.animate(
         [
           { height: startHeight + 'px' },
@@ -205,7 +215,7 @@
         ],
         {
           duration: isExpanded ? 320 : 420,
-          easing: 'cubic-bezier(0, 0, 0.2, 1)',
+          easing: motionEasing,
           fill: 'both'
         }
       );
@@ -224,7 +234,7 @@
           {
             duration: isExpanded ? 180 : 300,
             delay: isExpanded ? 0 : 45 + index * 28,
-            easing: 'cubic-bezier(0, 0, 0.2, 1)',
+            easing: motionEasing,
             fill: 'both'
           }
         );
