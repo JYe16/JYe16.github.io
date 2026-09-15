@@ -161,6 +161,27 @@
     });
   }
 
+  // --- Collapsible News ---
+  function initNewsToggle() {
+    const list = document.getElementById('news-list');
+    const toggle = document.getElementById('news-toggle');
+    if (!list || !toggle) return;
+
+    const items = list.querySelectorAll('.news-item');
+    if (items.length <= 5) {
+      toggle.parentElement.hidden = true;
+      list.classList.remove('is-collapsed');
+      return;
+    }
+
+    toggle.addEventListener('click', function () {
+      const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!isExpanded));
+      list.classList.toggle('is-collapsed', isExpanded);
+      toggle.querySelector('.news-toggle-label').textContent = isExpanded ? 'Show more' : 'Show less';
+    });
+  }
+
   // --- Init ---
   document.addEventListener('DOMContentLoaded', function () {
     initTheme();
@@ -169,6 +190,7 @@
     initMobileMenu();
     initSmoothScroll();
     initNavHighlight();
+    initNewsToggle();
   });
 
   // Apply theme immediately to prevent flash

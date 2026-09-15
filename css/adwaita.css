@@ -262,6 +262,48 @@ a:hover {
 }
 
 /* --- Hero / About Section --- */
+.job-market-banner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 32px;
+  padding: 16px 20px;
+  color: var(--text-primary);
+  background: linear-gradient(135deg, var(--accent-subtle), var(--bg-card));
+  border: 1px solid var(--accent-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.job-market-banner p {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.job-market-banner strong {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.job-market-icon {
+  display: inline-flex;
+  flex: 0 0 38px;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  color: var(--accent);
+  background: var(--bg-card);
+  border: 1px solid var(--accent-border);
+  border-radius: 50%;
+}
+
+.job-market-icon svg {
+  width: 19px;
+  height: 19px;
+  fill: currentColor;
+}
+
 .hero {
   display: flex;
   gap: 40px;
@@ -407,6 +449,59 @@ a:hover {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.news-list-collapsible.is-collapsed .news-item:nth-child(n + 6) {
+  display: none;
+}
+
+.news-toggle-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 14px;
+}
+
+.news-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  color: var(--text-secondary);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease-out),
+              background-color var(--duration-fast) var(--ease-out),
+              border-color var(--duration-fast) var(--ease-out),
+              box-shadow var(--duration-fast) var(--ease-out);
+}
+
+.news-toggle:hover {
+  color: var(--accent);
+  background: var(--accent-subtle);
+  border-color: var(--accent-border);
+  box-shadow: var(--shadow-md);
+}
+
+.news-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.news-toggle svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.news-toggle[aria-expanded="true"] svg {
+  transform: rotate(180deg);
 }
 
 .news-item {
@@ -816,6 +911,11 @@ a:hover {
 
 /* --- Responsive --- */
 @media (max-width: 768px) {
+  .job-market-banner {
+    align-items: flex-start;
+    padding: 15px 16px;
+  }
+
   .hero {
     flex-direction: column;
     align-items: center;

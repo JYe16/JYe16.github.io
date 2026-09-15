@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/adwaita.css?v=7">
+  <link rel="stylesheet" href="/css/adwaita.css?v=8">
   <noscript>
     <style>
       .anim-fade-up, .anim-fade-left, .anim-fade-right, .anim-scale-in {
@@ -75,6 +75,13 @@
 
   <main class="main-content">
 
+    <aside class="job-market-banner anim-fade-up" aria-label="Job market announcement">
+      <span class="job-market-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M20 6h-4V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V8a2 2 0 00-2-2zm-10-2h4v2h-4V4zm10 14H4v-5h6v1h4v-1h6v5zm0-7h-6v-1h-4v1H4V8h16v3z"/></svg>
+      </span>
+      <p><strong>I am on the 2026–2027 academic job market</strong> and seeking a tenure-track Assistant Professor position starting in Fall 2027. Please feel free to contact me.</p>
+    </aside>
+
     <!-- Hero / About -->
     <section id="about" class="section hero anim-fade-up">
       <div class="hero-avatar anim-scale-in">
@@ -111,7 +118,7 @@
         <h2>News</h2>
         <div class="section-line"></div>
       </div>
-      <div class="news-list stagger-children">
+      <div id="news-list" class="news-list news-list-collapsible is-collapsed stagger-children">
         <div class="news-item anim-fade-left">
           <span class="news-date">Aug 2026</span>
           <span class="news-text">Our paper <strong>GeoMotionGPT: Geometry-Aligned Motion Understanding with Large Language Models</strong> has been accepted to the <strong>EMNLP 2026 Main Conference</strong>!</span>
@@ -152,6 +159,12 @@
           <span class="news-date">Sep 2024</span>
           <span class="news-text">Personal website launched!</span>
         </div>
+      </div>
+      <div class="news-toggle-wrap">
+        <button id="news-toggle" class="news-toggle" type="button" aria-expanded="false" aria-controls="news-list">
+          <span class="news-toggle-label">Show more</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
+        </button>
       </div>
     </section>
 
