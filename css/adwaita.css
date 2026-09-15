@@ -30,6 +30,12 @@
   --morandi-lavender: #a29aaf;
   --morandi-sand: #c9bfb0;
 
+  --job-market-bg-start: #ead2ca;
+  --job-market-bg-end: #f7ebe5;
+  --job-market-accent: #9a5f52;
+  --job-market-border: rgba(154, 95, 82, 0.34);
+  --job-market-icon-bg: rgba(255, 255, 255, 0.66);
+
   --border-color: rgba(58, 54, 50, 0.08);
   --border-strong: rgba(58, 54, 50, 0.15);
   --shadow-sm: 0 1px 3px rgba(58, 54, 50, 0.06);
@@ -84,6 +90,12 @@
   --morandi-taupe: #b0a296;
   --morandi-lavender: #a29aaf;
   --morandi-sand: #c9bfb0;
+
+  --job-market-bg-start: #543d38;
+  --job-market-bg-end: #443633;
+  --job-market-accent: #e0aaa0;
+  --job-market-border: rgba(224, 170, 160, 0.32);
+  --job-market-icon-bg: rgba(255, 255, 255, 0.07);
 
   --border-color: rgba(228, 223, 217, 0.08);
   --border-strong: rgba(228, 223, 217, 0.15);
@@ -269,8 +281,8 @@ a:hover {
   margin-bottom: 32px;
   padding: 16px 20px;
   color: var(--text-primary);
-  background: linear-gradient(135deg, var(--accent-subtle), var(--bg-card));
-  border: 1px solid var(--accent-border);
+  background: linear-gradient(135deg, var(--job-market-bg-start), var(--job-market-bg-end));
+  border: 1px solid var(--job-market-border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card);
 }
@@ -281,7 +293,7 @@ a:hover {
 }
 
 .job-market-banner strong {
-  color: var(--accent);
+  color: var(--job-market-accent);
   font-weight: 700;
 }
 
@@ -292,9 +304,9 @@ a:hover {
   justify-content: center;
   width: 38px;
   height: 38px;
-  color: var(--accent);
-  background: var(--bg-card);
-  border: 1px solid var(--accent-border);
+  color: var(--job-market-accent);
+  background: var(--job-market-icon-bg);
+  border: 1px solid var(--job-market-border);
   border-radius: 50%;
 }
 
@@ -308,7 +320,7 @@ a:hover {
   display: flex;
   gap: 40px;
   align-items: flex-start;
-  margin-bottom: 50px;
+  margin-bottom: 24px;
 }
 
 .hero-avatar {
