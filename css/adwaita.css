@@ -742,7 +742,7 @@ a:hover {
   color: #1c2419;
 }
 
-.pub-tag-review {
+.pub-tag-preprint {
   background: rgba(141, 159, 170, 0.1);
   color: var(--morandi-blue);
   border-color: rgba(141, 159, 170, 0.14);
