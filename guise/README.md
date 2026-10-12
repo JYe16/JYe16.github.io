@@ -38,6 +38,10 @@ Table 1 from `tab:ladder`, Table 2 from `tab:baselines`, Table 3 from `tab:force
 `tab:register`, the angle charts from the appendix table `tab:wrapangle`, the remaining figures
 from the text of Sections 3 to 7. The BibTeX entry is arXiv's own (`https://arxiv.org/bibtex/2610.11005`).
 
+The case-study cards are a mechanical transcription of the paper's appendix `sections/11_case_study.tex`
+(same abridged passages, same `[…]` cuts, same bold spans, same blind human labels); Table 5 is
+`tab:crosscase`. The cards are collapsed by default and open on click.
+
 ## Figures
 
 Rendered from the LaTeX sources with Ghostscript (run from `arxiv/figures/`):
