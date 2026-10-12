@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1200">
+<title>How Narrative Wrapping Affects LLM Refusal: A Cross-Language Benchmark and Defense</title>
+<meta name="description" content="Language models refuse a harmful request stated directly and answer it inside a narrative wrapper. GUISE measures this across English, modern Chinese and Classical Chinese; AXIS trains the harm direction back onto the refusal direction.">
+<meta property="og:title" content="How Narrative Wrapping Affects LLM Refusal: A Cross-Language Benchmark and Defense">
+<meta property="og:description" content="Wrapping, not the register, breaks refusal. The GUISE benchmark and the AXIS defense.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231f4f9a'/%3E%3Ctext x='16' y='23' font-family='Inter,Helvetica,Arial,sans-serif' font-size='19' font-weight='700' fill='%23f6f8fb' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+
+<!-- ============================ HEADERBAR ============================ -->
+<header class="headerbar" id="headerbar">
+  <div class="headerbar-title">
+    <a href="#top">GUISE <span class="u">&amp; AXIS</span></a>
+  </div>
+  <nav class="headerbar-nav">
+    <a href="#benchmark">Benchmark</a>
+    <a href="#mechanism">Mechanism</a>
+    <a href="#method">Method</a>
+    <a href="#results">Results</a>
+    <a class="pill" href="https://arxiv.org/abs/2610.11005">Paper</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ============================== HERO ============================== -->
+  <section class="hero">
+    <div class="wrap">
+      <h1 class="title">How Narrative Wrapping Affects LLM Refusal: A Cross-Language Benchmark and Defense</h1>
+
+      <p class="authors">
+        <a class="au" href="../">Zhankai Ye<sup>1</sup></a>
+        <span class="au">Yanning Wang<sup>1</sup></span>
+        <span class="au">Yukai Jin<sup>1</sup></span>
+        <span class="au">Bo Mei<sup>2</sup></span>
+        <span class="au">Fangyi Li<sup>3</sup></span>
+        <span class="au">Wei Wang<sup>4</sup></span>
+        <span class="au">Shangqian Gao<sup>1</sup></span>
+        <span class="au">Xin Liu<sup>1</sup></span>
+      </p>
+      <p class="affils">
+        <span><sup>1</sup>Florida State University</span>
+        <span><sup>2</sup>Texas Christian University</span>
+        <span><sup>3</sup>University of Pennsylvania</span>
+        <span><sup>4</sup>Texas Tech University</span>
+      </p>
+
+      <p class="tagline"><span class="a">Wrapping, not the register,</span> <span class="b">breaks refusal.</span></p>
+      <p class="venue">English, modern Chinese and Classical Chinese &middot; Qwen3-1.7B, Qwen3-4B and GLM-4-9B</p>
+
+      <div class="hero-links">
+        <a class="primary" href="https://arxiv.org/abs/2610.11005">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm0 2.5L17.5 8H14V4.5zM8 13h8v1.5H8V13zm0 3.5h8V18H8v-1.5zM8 9.5h4V11H8V9.5z"/></svg>
+          Paper
+        </a>
+        <a class="k-cinnabar" href="https://github.com/JYe16/GUISE_Official">
+          <svg viewBox="0 0 24 24"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.2 1.9 1.2 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2 0-.4-.5-1.6.2-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.2 2.8.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3z"/></svg>
+          Code
+        </a>
+        <span class="disabled" role="link" aria-disabled="true" title="Full dataset coming soon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C7 2 4 3.6 4 5.5v13C4 20.4 7 22 12 22s8-1.6 8-3.5v-13C20 3.6 17 2 12 2zm0 2c3.9 0 6 1.1 6 1.5S15.9 7 12 7 6 5.9 6 5.5 8.1 4 12 4zM6 8.1C7.5 8.7 9.6 9 12 9s4.5-.3 6-.9V12c0 .4-2.1 1.5-6 1.5S6 12.4 6 12V8.1zm0 6.5c1.5.6 3.6.9 6 .9s4.5-.3 6-.9v3.9c0 .4-2.1 1.5-6 1.5s-6-1.1-6-1.5v-3.9z"/></svg>
+          Dataset
+          <span class="soon">Full dataset coming soon</span>
+        </span>
+        <a class="k-cobalt" href="#results">
+          <svg viewBox="0 0 24 24"><path d="M4 20h16v2H2V2h2v18zm3-3V9h3v8H7zm5 0V4h3v13h-3zm5 0v-6h3v6h-3z"/></svg>
+          Results
+        </a>
+        <a class="k-ochre" href="#bibtex">
+          <svg viewBox="0 0 24 24"><path d="M6 2h12a2 2 0 0 1 2 2v18l-8-4-8 4V4a2 2 0 0 1 2-2z"/></svg>
+          BibTeX
+        </a>
+      </div>
+
+      <div class="figures">
+        <div class="f-1">
+          <div class="big">95.7<span class="unit">%</span></div>
+          <div class="k">Wrapped attacks succeed</div>
+          <div class="d">That is the strict attack success rate on Qwen3-1.7B in Classical Chinese.
+            Asked directly, the same intents succeed 20.4% of the time.</div>
+        </div>
+        <div class="f-2">
+          <div class="big">81.1<span class="unit">&deg;</span></div>
+          <div class="k">Turned off the refusal direction</div>
+          <div class="d">Wrapping rotates the harmful&ndash;benign direction from 8.0&deg; to 81.1&deg;
+            away from the model's refusal direction.</div>
+        </div>
+        <div class="f-3">
+          <div class="big">93.7<span class="unit">Comp</span></div>
+          <div class="k">Best safety&ndash;usability composite</div>
+          <div class="d">AXIS reaches 93.7 on GLM-4-9B and also leads on Qwen3-1.7B (78.4) and
+            Qwen3-4B (92.9), ahead of five recent alignment methods.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= TEASER ============================= -->
+  <section class="band band--alt" data-accent="plum">
+    <div class="wrap">
+      <figure class="fig-wide">
+        <img src="static/figures/overview.png"
+             alt="Three panels. (a) An aligned model refuses a bare harmful request in modern Chinese. (b) The same request, wrapped by a register-shift wrapper with a persona and a narrative in Classical Chinese, gets a step-by-step answer from the same model. (c) The harmful-minus-benign direction of bare requests lies 8.0 degrees from the refusal axis, and that of wrapped attacks 81.1 degrees.">
+        <figcaption><span class="lbl">Narrative wrapping turns a harmful request away from the refusal axis.</span>
+          (a) Qwen3-1.7B refuses the bare modern request. (b) It answers the same request under a
+          Classical-Chinese narrative wrapper. (c) Across ten batches, wrapping rotates the
+          harmful-minus-benign direction from 8.0&deg; (6&ndash;10&deg;) to 81.1&deg; (77&ndash;86&deg;).</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============================ BENCHMARK ============================ -->
+  <section class="band band--paper" id="benchmark" data-accent="ochre">
+    <div class="wrap">
+      <div class="sec-head sec-head--center">
+        <div class="eyebrow">GUISE benchmark</div>
+        <h2 class="sec-title">The same intent, asked four ways</h2>
+        <p class="sec-sub">The failure lives in a pair: a request the model refuses, and the same
+          request it answers once wrapped. GUISE is built from matched requests, and one strict
+          judge reads every response.</p>
+      </div>
+
+      <ul class="pieces">
+        <li class="t-1">
+          <span class="n">01</span>
+          <span class="k">Bare or wrapped</span>
+          <span class="d">Each intent is asked directly, and inside a persona and a classical
+            narrative.</span>
+          <span class="num">1,067<small>intents</small></span>
+        </li>
+        <li class="t-2">
+          <span class="n">02</span>
+          <span class="k">Benign, in the same guise</span>
+          <span class="d">The same wrapper generator restyles Alpaca instructions, so over-refusal is
+            measured in the attack's own framing.</span>
+          <span class="num">1,000<small>benign intents</small></span>
+        </li>
+        <li class="t-3">
+          <span class="n">03</span>
+          <span class="k">Held-out wrappers and registers</span>
+          <span class="d">Three classical genres absent from training, and a parallel corpus in
+            English, modern Chinese and Classical Chinese.</span>
+          <span class="num">834<small>held-out attacks</small></span>
+        </li>
+        <li class="t-4">
+          <span class="n">04</span>
+          <span class="k">One strict judge</span>
+          <span class="d">Firm refusal, warn-then-answer, direct answer or off-topic.
+            Warn-then-answer counts as an attack success.</span>
+          <span class="num">675<small>human-labelled responses for calibration</small></span>
+        </li>
+      </ul>
+
+      <div class="split">
+        <div>
+          <div class="table-wrap">
+            <table class="tbl">
+              <thead>
+                <tr><th class="l">Attack success (%)</th><th>English</th><th>Modern</th><th>Classical</th></tr>
+              </thead>
+              <tbody>
+                <tr class="group"><td class="l" colspan="4">Strict judge</td></tr>
+                <tr><td class="l">Bare request</td><td>18.0</td><td>16.2</td><td>20.4</td></tr>
+                <tr class="ours"><td class="l">Wrapped request</td><td>89.4</td><td>93.0</td><td class="best">95.7</td></tr>
+                <tr class="group"><td class="l" colspan="4">Lenient judge (CC-BOS evaluator)</td></tr>
+                <tr><td class="l">Wrapped request</td><td>28.8</td><td>43.3</td><td>45.1</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="tbl-cap"><span class="lbl">Table 1.</span> Paired bare and wrapped outcomes on base
+            Qwen3-1.7B. Wrapped rows use 1,067 intents, the bare row 334 held-out intents.</p>
+        </div>
+        <div class="split-txt">
+          <h4>Wrapping drives attack success</h4>
+          <p>Asked directly, Qwen3-1.7B answers 16&ndash;20% of harmful requests. Wrapped, it answers
+            89&ndash;96%. Changing the register moves attack success by 6.3 points; wrapping a
+            Classical-Chinese request adds about 75.</p>
+          <p>Lenient scoring hides most of this. The attack pipeline's own evaluator reports
+            28.8&ndash;45.1% on the same responses, and a refusal-phrase matcher counts 75% of
+            warn-then-answer responses as refusals.</p>
+          <div class="chips">
+            <span class="chip">Split by intent: 561 / 98 / 408</span>
+            <span class="chip">Warn-then-answer = success</span>
+            <span class="chip">1,002 anchor responses re-scored per batch</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ MECHANISM ============================ -->
+  <section class="band band--deep" id="mechanism" data-accent="cinnabar">
+    <div class="wrap">
+      <div class="sec-head sec-head--center">
+        <div class="eyebrow">Mechanism</div>
+        <h2 class="sec-title">Wrapping turns the harm direction away from refusal</h2>
+        <p class="sec-sub">The harm direction is the difference between the mean last-token states of
+          matched harmful and benign requests. In the base model, register moves it a little off the
+          refusal direction; narrative wrapping moves it much farther, on every model.</p>
+      </div>
+
+      <div class="charts" id="charts"></div>
+      <p class="chart-legend"><span class="sw bare"></span>bare requests<span class="sw hot"></span>wrapped:
+        harm334 and the three held-out genres of ood834</p>
+
+      <div class="stat-row">
+        <div class="callout">
+          <h4>The refusal projection falls to the benign level</h4>
+          <div class="pair"><span class="from">761</span><span class="arrow">&rarr;</span><span class="to">164&ndash;219</span></div>
+          <span class="lab">bare modern &rarr; wrapped, Qwen3-1.7B</span>
+          Harmful and benign requests stay separable after wrapping, but no longer along the refusal
+          direction. Wrapping in English or modern Chinese lowers the projection as far as wrapping in
+          Classical Chinese.
+        </div>
+        <div class="callout">
+          <h4>The correction has to depend on content</h4>
+          Rotating the wrapped harm direction onto the refusal direction at constant norm changes
+          nothing. Adding the missing projection as a constant shift restores refusal and
+          <strong>turns a third of benign answers into nonsense</strong>. A fix has to pull wrapped
+          harmful requests back and leave wrapped benign ones in place.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== METHOD ============================= -->
+  <section class="band band--tint" id="method" data-accent="cobalt">
+    <div class="wrap">
+      <div class="sec-head sec-head--split">
+        <div>
+          <div class="eyebrow">AXIS</div>
+          <h2 class="sec-title">Train the direction back, then carry the refusal through</h2>
+        </div>
+        <p class="sec-sub">AXIS trains one LoRA adapter on frozen weights. The same weights with the
+          adapter disabled serve as the reference for every term.</p>
+      </div>
+
+      <div class="objective">
+        <div class="eq">&#x2112; = <span class="t1">&nbsp;&#x2112;<sub>pref</sub></span>&nbsp;+&nbsp;<span class="t2">&lambda;<sub>rot</sub>&#x2112;<sub>rot</sub></span>&nbsp;+&nbsp;<span class="t3">&lambda;<sub>cmt</sub>&#x2112;<sub>cmt</sub></span></div>
+        <div class="terms">
+          <div class="term tm-1">
+            <div class="k">Preference</div>
+            <p>DPO on wrapped pairs. A harmful prompt and a benign control in the same guise train
+              together, so refusing and answering share one objective.</p>
+          </div>
+          <div class="term tm-2">
+            <div class="k">Rotation</div>
+            <p>Pulls the policy's Classical-Chinese harm direction onto the frozen refusal direction
+              of bare modern requests.</p>
+          </div>
+          <div class="term tm-3">
+            <div class="k">Commitment</div>
+            <p>Lifts the chosen refusal so it is produced and terminated, instead of turning into
+              warn-then-answer.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1. Rotation -->
+      <h3 class="subhead" data-accent="cinnabar">
+        <span class="n">1</span> Rotation: realign the classical harm direction
+        <span class="rule"></span>
+      </h3>
+
+      <div class="split flip" data-accent="cinnabar">
+        <div class="split-fig">
+          <img src="static/figures/rotation_angle_steps.png"
+               alt="Angle to the refusal axis over 420 optimiser updates. DPO and DPO plus commitment stay between about 40 and 50 degrees; AXIS falls from about 55 degrees to under 10.">
+          <p class="fig-cap"><span class="lbl">Training dynamics.</span> Angle between the classical
+            harm direction and the modern refusal direction on Qwen3-1.7B. DPO leaves the geometry
+            where it is; AXIS closes the angle.</p>
+        </div>
+        <div class="split-txt">
+          <h4>One cosine term, read through the policy</h4>
+          <p>The refusal direction <span class="mono">r&#770;</span> is computed once, from the frozen
+            base model on training intents. At every step the policy encodes K bare harmful and K bare
+            benign Classical-Chinese requests, and <span class="mono">&Delta;<sub>&theta;</sub></span>
+            is the difference of their mean states at layer L. The loss is
+            <span class="mono nowrap">1 &minus; cos(&Delta;<sub>&theta;</sub>, r&#770;)</span>.</p>
+          <p>The term restores the contrast itself: the refusal projection of held-out wrappers rises
+            from about 200 to 724&ndash;858, against 761 for bare modern requests.</p>
+          <div class="chips">
+            <span class="chip">K = 12 per class</span>
+            <span class="chip">Layer 24 on Qwen3-1.7B</span>
+            <span class="chip"><span class="mono">&lambda;<sub>rot</sub> = 0.1</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Commitment -->
+      <h3 class="subhead" data-accent="indigo">
+        <span class="n">2</span> Commitment: carry the refusal to its end
+        <span class="rule"></span>
+      </h3>
+
+      <div class="plate">
+        <div class="lhs">
+          <h4>Warn-then-answer happens after the model has seen the harm</h4>
+          <p>A model that warns and then answers has already registered the request as harmful.
+            Rotation fixes where the request sits in representation space; the commitment term acts on
+            what the model produces from there.</p>
+          <p>It is a length-normalised log-likelihood of the chosen completion, with extra weight on
+            the tokens where a refusal is decided. It raises the chosen refusal directly, where DPO
+            spends most of its weight pushing the rejected continuation down.</p>
+        </div>
+        <div class="rhs">
+          <div class="formula">
+            &#x2112;<sub>cmt</sub> = &minus; &Sigma;<sub>t</sub> <span class="var">w<sub>t</sub></span> log &pi;<sub>&theta;</sub>(<span class="var">y<sup>+</sup><sub>t</sub></span> | q, y<sup>+</sup><sub>&lt;t</sub>) / &Sigma;<sub>t</sub> <span class="var">w<sub>t</sub></span><br>
+            <span class="var">w<sub>t</sub></span> = &omega; &nbsp;if t &le; k or t = |y<sup>+</sup>|, &nbsp;else 1
+          </div>
+          <p class="note-small"><strong>&omega; = 2</strong> on the first <strong>k = 4</strong> tokens and
+            on the final EOS of the chosen completion: a refusal for a harmful prompt, a helpful answer
+            for a benign one. <strong>&lambda;<sub>cmt</sub> = 0.2</strong>.</p>
+        </div>
+      </div>
+
+      <!-- 3. Pairs -->
+      <h3 class="subhead" data-accent="celadon">
+        <span class="n">3</span> Preference pairs: refuse and answer under one objective
+        <span class="rule"></span>
+      </h3>
+
+      <div class="note" data-accent="celadon">
+        Pairs are built before training from full-length responses labelled by the GUISE judge. For a
+        harmful prompt, the rejected response is a warn-then-answer or direct answer, and the chosen
+        one a short in-register refusal. For a benign prompt in the same wrapping, the chosen response
+        is a helpful answer and the rejected one a refusal. The controlled study trains on
+        <strong>3,336 pairs</strong> over 583 harmful and 598 benign intents, with standard DPO at
+        &beta; = 0.1.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== RESULTS ============================ -->
+  <section class="band band--paper" id="results" data-accent="cinnabar">
+    <div class="wrap">
+      <div class="sec-head sec-head--center">
+        <div class="eyebrow">Results</div>
+        <h2 class="sec-title">The best balance of safety and usability on three models</h2>
+        <p class="sec-sub">We train five recent alignment methods and plain DPO on the same pairs and
+          compare them with AXIS and the base model. AXIS runs at one dose,
+          &lambda;<sub>rot</sub> = 0.1, on every model, with no per-model tuning.</p>
+      </div>
+
+      <h3 class="subhead"><span class="n">A</span> Against five recent methods <span class="rule"></span></h3>
+
+      <div class="table-wrap">
+        <table class="tbl dense">
+          <thead>
+            <tr class="grp">
+              <th class="blank"></th>
+              <th class="sep" colspan="5">Qwen3-1.7B</th>
+              <th class="sep" colspan="5">Qwen3-4B</th>
+              <th class="sep" colspan="5">GLM-4-9B</th>
+            </tr>
+            <tr>
+              <th class="l">Method</th>
+              <th class="sep">harm &uarr;</th><th>ood &uarr;</th><th>xs &darr;</th><th>help &uarr;</th><th>Comp &uarr;</th>
+              <th class="sep">harm &uarr;</th><th>ood &uarr;</th><th>xs &darr;</th><th>help &uarr;</th><th>Comp &uarr;</th>
+              <th class="sep">harm &uarr;</th><th>ood &uarr;</th><th>xs &darr;</th><th>help &uarr;</th><th>Comp &uarr;</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="base"><td class="l">Base model</td>
+              <td class="sep">5.4</td><td>29.1</td><td>6.9</td><td>82.0</td><td>52.4</td>
+              <td class="sep">5.1</td><td>54.4</td><td>7.8</td><td>89.4</td><td>60.3</td>
+              <td class="sep">7.5</td><td>38.0</td><td class="best">5.3</td><td>93.1</td><td>58.3</td></tr>
+            <tr><td class="l">DPO</td>
+              <td class="sep">3.9</td><td>14.4</td><td>3.3</td><td>88.6</td><td>50.9</td>
+              <td class="sep">23.6</td><td>78.3</td><td class="best">6.1</td><td class="best">91.0</td><td>71.7</td>
+              <td class="sep">44.6</td><td>71.0</td><td>6.1</td><td class="best">93.9</td><td>75.8</td></tr>
+            <tr><td class="l">SimPER</td>
+              <td class="sep">25.1</td><td>23.1</td><td class="best">2.9</td><td class="best">90.2</td><td>58.9</td>
+              <td class="sep">94.3</td><td>98.0</td><td>15.1</td><td>82.5</td><td>89.9</td>
+              <td class="sep">95.5</td><td>99.2</td><td>11.8</td><td>86.5</td><td>92.3</td></tr>
+            <tr><td class="l">&alpha;-DPO</td>
+              <td class="sep best">99.4</td><td class="best">100.0</td><td>77.1</td><td>22.0</td><td>61.1</td>
+              <td class="sep">94.3</td><td>99.3</td><td>35.5</td><td>53.5</td><td>77.9</td>
+              <td class="sep">90.4</td><td>95.4</td><td>9.4</td><td>89.4</td><td>91.5</td></tr>
+            <tr><td class="l">DOOR</td>
+              <td class="sep">10.2</td><td>32.7</td><td>5.3</td><td>82.0</td><td>54.9</td>
+              <td class="sep">93.7</td><td>95.7</td><td>16.7</td><td>75.5</td><td>87.0</td>
+              <td class="sep">94.3</td><td>87.1<sup>*</sup></td><td>11.0</td><td>84.5</td><td>88.7</td></tr>
+            <tr><td class="l">Deep Alignment</td>
+              <td class="sep">24.6</td><td>57.9</td><td>11.4</td><td>75.1</td><td>61.5</td>
+              <td class="sep">37.4</td><td>73.9</td><td>7.8</td><td>84.5</td><td>72.0</td>
+              <td class="sep">42.2</td><td>71.6</td><td>6.9</td><td>87.4</td><td>73.6</td></tr>
+            <tr><td class="l">Booster</td>
+              <td class="sep">83.2</td><td>81.1</td><td>51.8</td><td>42.9</td><td>63.8</td>
+              <td class="sep best">100.0</td><td class="best">99.5</td><td>50.2</td><td>44.1</td><td>73.4</td>
+              <td class="sep best">99.4</td><td class="best">99.5</td><td>18.8</td><td>80.0</td><td>90.0</td></tr>
+            <tr class="ours"><td class="l">AXIS (ours)</td>
+              <td class="sep">71.9</td><td>68.1</td><td>9.8</td><td>83.3</td><td class="best">78.4</td>
+              <td class="sep">94.6</td><td>98.8</td><td>9.4</td><td>87.8</td><td class="best">92.9</td>
+              <td class="sep">98.8</td><td>99.3</td><td>9.8</td><td>86.5</td><td class="best">93.7</td></tr>
+          </tbody>
+          <tfoot>
+            <tr><td colspan="16"><sup>*</sup>92 of DOOR's 9B responses are empty; excluding them gives 97.8%.</td></tr>
+          </tfoot>
+        </table>
+      </div>
+      <p class="tbl-cap"><span class="lbl">Table 2.</span> <em>harm</em> / <em>ood</em>: strict refusal
+        rate on in-distribution / held-out-wrapper attacks. <em>xs</em>: over-refusal on adversarial
+        benign requests. <em>help</em>: helpfulness. Comp = &frac12;&middot;mean(harm, ood) +
+        &frac12;&middot;mean(100 &minus; xs, help). At 1.7B, &alpha;-DPO and Booster refuse more attacks
+        and over-refuse 77.1% and 51.8% of adversarial benign requests. At 4B, AXIS matches SimPER's
+        safety with 5.7 points less over-refusal; at 9B it ties Booster's safety with 9.0 points less.</p>
+
+      <figure class="fig-wide" style="margin-top:30px">
+        <img src="static/figures/safety_usability_plane.png"
+             alt="Safety against usability for eight systems on three models. AXIS lies on the outermost composite iso-line on every model; alpha-DPO and Booster sit near the top-left corner, and DPO, SimPER, DOOR and Deep Alignment near the bottom-right at 1.7B.">
+        <figcaption><span class="lbl">The safety&ndash;usability plane.</span> The safety half of Comp
+          (vertical) against its usability half (horizontal), one scale for all panels. Dashed
+          diagonals are composite iso-lines; AXIS lies on the outermost one on every model.</figcaption>
+      </figure>
+
+      <h3 class="subhead"><span class="n">B</span> What each term contributes <span class="rule"></span></h3>
+
+      <div class="table-wrap">
+        <table class="tbl dense">
+          <thead>
+            <tr class="grp">
+              <th class="blank"></th>
+              <th class="sep" colspan="4">Qwen3-1.7B (3 seeds)</th>
+              <th class="sep" colspan="4">Qwen3-4B (2 seeds)</th>
+              <th class="sep" colspan="4">GLM-4-9B</th>
+            </tr>
+            <tr>
+              <th class="l">Arm</th>
+              <th class="sep">harm &uarr;</th><th>ood &uarr;</th><th>xs &darr;</th><th>ben &darr;</th>
+              <th class="sep">harm &uarr;</th><th>ood &uarr;</th><th>xs &darr;</th><th>ben &darr;</th>
+              <th class="sep">harm &uarr;</th><th>ood &uarr;</th><th>xs &darr;</th><th>ben &darr;</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="base"><td class="l">Base model</td>
+              <td class="sep">2.1</td><td>22.9</td><td class="best">0.4</td><td class="best">0.0</td>
+              <td class="sep">5.1</td><td>54.4</td><td>7.8</td><td>0.7</td>
+              <td class="sep">6.6</td><td>37.3</td><td class="best">2.4</td><td class="best">0.0</td></tr>
+            <tr><td class="l">DPO</td>
+              <td class="sep">2.2</td><td>14.1</td><td>0.5</td><td class="best">0.0</td>
+              <td class="sep">23.7</td><td>78.3</td><td class="best">6.1</td><td class="best">0.3</td>
+              <td class="sep">44.9</td><td>70.5</td><td>2.9</td><td class="best">0.0</td></tr>
+            <tr><td class="l">DPO + rot</td>
+              <td class="sep">2.7</td><td>57.3</td><td>12.8</td><td class="best">0.0</td>
+              <td class="sep">48.8</td><td>94.3</td><td>7.8</td><td class="best">0.3</td>
+              <td class="sep">84.4</td><td>95.7</td><td>12.7</td><td class="best">0.0</td></tr>
+            <tr><td class="l">AXIS, random anchor</td>
+              <td class="sep">79.0</td><td>71.1</td><td>10.1</td><td>1.1</td>
+              <td class="sep">91.5</td><td>99.1</td><td>12.5</td><td>1.7</td>
+              <td class="sep">97.6</td><td>99.4</td><td>9.4</td><td>7.7</td></tr>
+            <tr><td class="l">AXIS, orthogonal anchor</td>
+              <td class="sep">65.4</td><td>55.9</td><td>5.3</td><td>0.8</td>
+              <td class="sep">88.2</td><td>97.9</td><td>8.4</td><td>1.7</td>
+              <td class="sep">97.0</td><td>99.3</td><td>4.1</td><td>7.3</td></tr>
+            <tr><td class="l">rot + cmt, no DPO</td>
+              <td class="sep best">94.3</td><td class="best">92.4</td><td>16.9</td><td>35.7</td>
+              <td class="sep best">96.7</td><td class="best">99.7</td><td>28.0</td><td>25.5</td>
+              <td class="sep best">99.7</td><td class="best">99.8</td><td>21.2</td><td>43.7</td></tr>
+            <tr class="ours"><td class="l">AXIS (real anchor)</td>
+              <td class="sep">74.3</td><td>81.0</td><td>13.1</td><td>1.1</td>
+              <td class="sep">92.7</td><td>99.1</td><td>14.3</td><td>3.0</td>
+              <td class="sep">98.5</td><td class="best">99.8</td><td>14.7</td><td>10.3</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="tbl-cap"><span class="lbl">Table 3.</span> Ablation over the three terms and the anchor,
+        all at &lambda;<sub>rot</sub> = 1. <em>ben</em>: over-refusal on plain
+        benign requests. On Qwen3-1.7B the real anchor gives the best balance of safety and usability;
+        at 4B and 9B every anchor saturates ood834 and the arms separate on over-refusal.</p>
+
+      <div class="findings">
+        <div class="finding f-rot">
+          <span class="big">+47.0 / +42.7 / +39.7</span>
+          <div class="k">Rotation buys held-out wrappers</div>
+          <p>Adding the rotation term to DPO lifts refusal on ood834 by these margins in three seeds at
+            1.7B (all p &lt; 10<sup>&minus;76</sup>), with no rise in plain-benign over-refusal.</p>
+        </div>
+        <div class="finding f-anc">
+          <span class="big">81.0 &gt; 71.1 &gt; 55.9</span>
+          <div class="k">The anchor's direction matters</div>
+          <p>On ood834, the real, placebo and orthogonal anchors order by their overlap with the
+            model's own safety axis, in every seed.</p>
+        </div>
+        <div class="finding f-pref">
+          <span class="big">35.7% vs 1.1%</span>
+          <div class="k">DPO keeps benign requests answered</div>
+          <p>Without the preference term, the 1.7B model refuses 35.7% of plain benign requests.
+            AXIS refuses 1.1%.</p>
+        </div>
+      </div>
+
+      <h3 class="subhead"><span class="n">C</span> Beyond the training register and wrappers <span class="rule"></span></h3>
+
+      <div class="table-duo">
+        <div>
+          <div class="table-wrap">
+            <table class="tbl">
+              <thead>
+                <tr><th class="l">Strict refusal rate (%)</th><th>Classical</th><th>Modern</th><th>English</th></tr>
+              </thead>
+              <tbody>
+                <tr class="ours"><td class="l">AXIS, harm334</td><td>71.3</td><td>68.4</td><td>68.1</td></tr>
+                <tr class="ours"><td class="l">AXIS, ood834</td><td>68.5</td><td class="best">73.7</td><td>70.4</td></tr>
+                <tr class="base"><td class="l">Base model, harm334</td><td>3.5</td><td>6.7</td><td>9.7</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="tbl-cap"><span class="lbl">Table 4.</span> AXIS on Qwen3-1.7B, post-trained on
+            Classical Chinese only, against the same attacks written in three registers. It refuses
+            68.1&ndash;73.7% of the modern-Chinese and English versions, against 3.5&ndash;9.7% for the
+            base model.</p>
+        </div>
+        <div class="split-fig">
+          <img src="static/figures/readout_gain_lam01.png"
+               alt="Strict refusal rate against refusal projection of wrapped harmful requests. Adding the rotation term moves harm334 from 44.3 to 66.6 percent and ood834 from 42.8 to 68.4 percent, with projection rising from about 0.57 to 0.79 and 0.89.">
+          <p class="fig-cap"><span class="lbl">Projection and refusal rise together.</span> With the
+            rotation term at &lambda;<sub>rot</sub> = 0.1 (three seeds each),
+            refusal on Qwen3-1.7B goes from 44.3 to 66.6% on harm334 and from 42.8 to 68.4% on
+            ood834, as the wrapped refusal projection climbs toward that of a bare modern request.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= BIBTEX ============================= -->
+  <section class="band band--alt" id="bibtex" data-accent="ochre">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Citation</div>
+        <h2 class="sec-title">BibTeX</h2>
+      </div>
+      <pre class="bib"><code>@misc{ye2026narrativewrappingaffectsllm,
+      <span class="fld">title</span>={How Narrative Wrapping Affects LLM Refusal: A Cross-Language Benchmark and Defense},
+      <span class="fld">author</span>={Zhankai Ye and Yanning Wang and Yukai Jin and Bo Mei and Fangyi Li and Wei Wang and Shangqian Gao and Xin Liu},
+      <span class="fld">year</span>={2026},
+      <span class="fld">eprint</span>={2610.11005},
+      <span class="fld">archivePrefix</span>={arXiv},
+      <span class="fld">primaryClass</span>={cs.AI},
+      <span class="fld">url</span>={https://arxiv.org/abs/2610.11005},
+}</code></pre>
+    </div>
+  </section>
+
+  <!-- ============================= FOOTER ============================= -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="cols">
+        <div>
+          <h5>License</h5>
+          <p>Code released under the MIT License.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+<script src="static/js/data.js"></script>
+<script src="static/js/main.js"></script>
+</body>
+</html>
