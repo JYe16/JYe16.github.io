@@ -16,7 +16,8 @@ static/js/main.js        chart construction, headerbar scroll state, scroll spy
 static/figures/          figures exported from the paper's LaTeX source
 ```
 
-Static files only, no build step. Every asset path is relative, so the page works under the
+Static files only, no build step. The stylesheet and scripts are linked with a `?v=` query; bump
+it whenever they change, or browsers keep serving the cached copy next to a new `index.html`. Every asset path is relative, so the page works under the
 `/guise/` subpath of the user site and from a local server at the repository root.
 
 The stylesheet is **desktop only on purpose**: there is no breakpoint, `body` carries a
