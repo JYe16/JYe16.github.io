@@ -5,7 +5,7 @@ Defense** (GUISE benchmark, AXIS defense), served at <https://jye16.github.io/gu
 
 - Paper: <https://arxiv.org/abs/2610.11005>
 - Code: <https://github.com/JYe16/GUISE_Official>
-- Dataset (gated, access on request): <https://huggingface.co/datasets/zy22b/GUISE>
+- Dataset (gated, access on request): <https://huggingface.co/datasets/xl-stack-lab/GUISE>
 
 ## Layout
 
