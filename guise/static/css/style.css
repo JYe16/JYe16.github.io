@@ -250,25 +250,9 @@ section[id] { scroll-margin-top: calc(var(--headerbar-h) + 20px); }
 .hero-links a:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
 .hero-links svg { width: 19px; height: 19px; fill: currentColor; flex: none; }
 .hero-links a.primary { background: var(--ink); color: var(--paper); border-color: var(--ink); }
-/* dataset link: present but disabled until the full release */
-.hero-links .disabled {
-  display: inline-flex; align-items: center; gap: 9px;
-  padding: 12px 14px 12px 24px;
-  border-radius: 999px;
-  font-size: 16px; font-weight: 650; letter-spacing: -.005em;
-  background: var(--paper-alt); color: var(--ink-3);
-  border: 1px dashed var(--line-2);
-  cursor: not-allowed; user-select: none;
-}
-.hero-links .disabled svg { width: 19px; height: 19px; fill: currentColor; flex: none; opacity: .7; }
-.hero-links .disabled .soon {
-  padding: 3px 11px; border-radius: 999px;
-  font-size: 12.5px; font-weight: 650; letter-spacing: .01em;
-  background: var(--card); color: var(--ink-3);
-  border: 1px solid var(--line);
-}
 .hero-links a.primary:hover { background: #000; color: #fff; }
 .hero-links a.k-cinnabar:hover { border-color: var(--cinnabar-line); color: var(--cinnabar); background: var(--cinnabar-soft); }
+.hero-links a.k-plum:hover { border-color: var(--plum-line); color: var(--plum); background: var(--plum-soft); }
 .hero-links a.k-cobalt:hover  { border-color: var(--cobalt-line);  color: var(--cobalt);  background: var(--cobalt-soft); }
 .hero-links a.k-ochre:hover { border-color: var(--ochre-line); color: var(--ochre); background: var(--ochre-soft); }
 
