@@ -733,13 +733,6 @@ a:hover {
   white-space: nowrap;
 }
 
-.pub-chip-venue {
-  background: var(--bg-secondary);
-  color: var(--text-secondary);
-  border-color: var(--border-color);
-  font-variant-numeric: tabular-nums;
-}
-
 .pub-chip-preprint {
   background: rgba(141, 159, 170, 0.14);
   color: #5b6f7c;
