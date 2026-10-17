@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/adwaita.css?v=9">
+  <link rel="stylesheet" href="/css/adwaita.css?v=10">
   <noscript>
     <style>
       .anim-fade-up, .anim-fade-left, .anim-fade-right, .anim-scale-in {
@@ -27,7 +27,7 @@
       }
     </style>
   </noscript>
-  <script src="/js/main.js?v=4" defer></script>
+  <script src="/js/main.js?v=5" defer></script>
   <script type="application/ld+json">
   {
     "@context": "http://schema.org",
@@ -186,128 +186,148 @@
         <h2>Publications</h2>
         <div class="section-line"></div>
       </div>
-      <div class="stagger-children">
-        <div class="pub-item anim-fade-up">
-          <a class="pub-thumb-link" href="https://arxiv.org/abs/2610.11005" target="_blank" rel="noopener noreferrer" aria-label="Open the GUISE paper page">
-            <img class="pub-thumb" src="/images/GUISE.png" alt="GUISE overview thumbnail">
-          </a>
+      <div class="pub-list stagger-children">
+        <article class="pub-card anim-fade-up">
+          <button class="pub-figure" type="button" data-lightbox-src="/images/GUISE.png" data-lightbox-title="How Narrative Wrapping Affects LLM Refusal: A Cross-Language Benchmark and Defense" aria-label="Enlarge figure: How Narrative Wrapping Affects LLM Refusal: A Cross-Language Benchmark and Defense">
+            <img src="/images/GUISE.png" alt="GUISE overview figure" loading="lazy" decoding="async">
+            <span class="pub-figure-zoom"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zm2.5-4h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg></span>
+          </button>
           <div class="pub-body">
-            <div class="pub-title"><a href="https://jye16.github.io/guise/" target="_blank" rel="noopener noreferrer">How Narrative Wrapping Affects LLM Refusal: A Cross-Language Benchmark and Defense</a></div>
-            <div class="pub-authors"><span class="me">Z. Ye</span>, Y. Wang, Y. Jin, B. Mei, F. Li, W. Wang, S. Gao, X. Liu</div>
-            <div class="pub-venue">arXiv:2610.11005 (2026)</div>
-            <div class="pub-links">
-              <span class="pub-tag pub-tag-preprint">arXiv Available</span>
-              <a class="pub-icon-link pub-icon-link-github" href="https://github.com/JYe16/GUISE_Official" target="_blank" rel="noopener noreferrer" aria-label="GUISE on GitHub" title="GitHub">
-                <img src="/icons/github.svg?v=3" width="18" height="18" alt="" aria-hidden="true">
-              </a>
-              <a class="pub-icon-link pub-icon-link-hf" href="https://huggingface.co/datasets/xl-stack-lab/GUISE" target="_blank" rel="noopener noreferrer" aria-label="GUISE on Hugging Face" title="Hugging Face">
-                <img src="/icons/huggingface.svg" width="20" height="20" alt="" aria-hidden="true">
-              </a>
+            <div class="pub-meta">
+              <span class="pub-chip pub-chip-preprint">arXiv Available</span>
+            </div>
+            <h3 class="pub-title"><a href="https://jye16.github.io/guise/" target="_blank" rel="noopener noreferrer">How Narrative Wrapping Affects LLM Refusal: A Cross-Language Benchmark and Defense</a></h3>
+            <p class="pub-authors"><span class="me">Z. Ye</span>, Y. Wang, Y. Jin, B. Mei, F. Li, W. Wang, S. Gao, X. Liu</p>
+            <p class="pub-venue">arXiv:2610.11005 (2026)</p>
+            <div class="pub-actions">
+              <a class="pub-btn" href="https://jye16.github.io/guise/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm6.93 6h-2.95a15.6 15.6 0 00-1.38-3.56A8.03 8.03 0 0118.93 8zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14A7.9 7.9 0 014 12c0-.69.1-1.36.26-2h3.38a16.5 16.5 0 000 4H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56A8.03 8.03 0 015.08 16zm2.95-8H5.08a8.03 8.03 0 014.33-3.56A15.6 15.6 0 008.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66a14.7 14.7 0 010-4h4.68a14.7 14.7 0 010 4zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 01-4.33 3.56zM16.36 14a16.5 16.5 0 000-4h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/></svg>Project Page</a>
+              <a class="pub-btn" href="https://arxiv.org/abs/2610.11005" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v2H4V4zm0 7h16v2H4v-2zm0 7h10v2H4v-2z"/></svg>arXiv</a>
+              <a class="pub-btn pub-btn-github" href="https://github.com/JYe16/GUISE_Official" target="_blank" rel="noopener noreferrer"><img src="/icons/github.svg?v=3" alt="" aria-hidden="true">Code</a>
+              <a class="pub-btn" href="https://huggingface.co/datasets/xl-stack-lab/GUISE" target="_blank" rel="noopener noreferrer"><img src="/icons/huggingface.svg" alt="" aria-hidden="true">Dataset</a>
             </div>
           </div>
-        </div>
-        <div class="pub-item anim-fade-up">
-          <a class="pub-thumb-link" href="https://arxiv.org/abs/2601.07632" target="_blank" rel="noopener noreferrer" aria-label="Open the GeoMotionGPT paper page">
-            <img class="pub-thumb" src="/images/GeoMotionGPT.png" alt="GeoMotionGPT thumbnail">
-          </a>
+        </article>
+        <article class="pub-card anim-fade-up">
+          <button class="pub-figure" type="button" data-lightbox-src="/images/GeoMotionGPT.png" data-lightbox-title="GeoMotionGPT: Geometry-Aligned Motion Understanding with Large Language Models" aria-label="Enlarge figure: GeoMotionGPT: Geometry-Aligned Motion Understanding with Large Language Models">
+            <img src="/images/GeoMotionGPT.png" alt="GeoMotionGPT architecture figure" loading="lazy" decoding="async">
+            <span class="pub-figure-zoom"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zm2.5-4h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg></span>
+          </button>
           <div class="pub-body">
-            <div class="pub-title"><a href="https://arxiv.org/abs/2601.07632" target="_blank" rel="noopener noreferrer">GeoMotionGPT: Geometry-Aligned Motion Understanding with Large Language Models</a></div>
-            <div class="pub-authors"><span class="me">Z. Ye</span>, B. Li, Y. Jin, S. Li, W. Wang, Y. Zhang, S. Gao, X. Liu</div>
-            <div class="pub-venue">The 2026 Conference on Empirical Methods in Natural Language Processing (EMNLP)</div>
-            <div class="pub-links">
-              <span class="pub-tag pub-tag-accepted">Accepted</span>
-              <a class="pub-icon-link pub-icon-link-github" href="https://github.com/JYe16/GeoMotionGPT" target="_blank" rel="noopener noreferrer" aria-label="GeoMotionGPT on GitHub" title="GitHub">
-                <img src="/icons/github.svg?v=3" width="18" height="18" alt="" aria-hidden="true">
-              </a>
-              <a class="pub-icon-link pub-icon-link-hf" href="https://huggingface.co/zy22b/GeoMotionGPT" target="_blank" rel="noopener noreferrer" aria-label="GeoMotionGPT on Hugging Face" title="Hugging Face">
-                <img src="/icons/huggingface.svg" width="20" height="20" alt="" aria-hidden="true">
-              </a>
+            <div class="pub-meta">
+              <span class="pub-chip pub-chip-accepted">Accepted</span>
+            </div>
+            <h3 class="pub-title"><a href="https://arxiv.org/abs/2601.07632" target="_blank" rel="noopener noreferrer">GeoMotionGPT: Geometry-Aligned Motion Understanding with Large Language Models</a></h3>
+            <p class="pub-authors"><span class="me">Z. Ye</span>, B. Li, Y. Jin, S. Li, W. Wang, Y. Zhang, S. Gao, X. Liu</p>
+            <p class="pub-venue">The 2026 Conference on Empirical Methods in Natural Language Processing (EMNLP)</p>
+            <div class="pub-actions">
+              <a class="pub-btn" href="https://arxiv.org/abs/2601.07632" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v2H4V4zm0 7h16v2H4v-2zm0 7h10v2H4v-2z"/></svg>arXiv</a>
+              <a class="pub-btn pub-btn-github" href="https://github.com/JYe16/GeoMotionGPT" target="_blank" rel="noopener noreferrer"><img src="/icons/github.svg?v=3" alt="" aria-hidden="true">Code</a>
+              <a class="pub-btn" href="https://huggingface.co/zy22b/GeoMotionGPT" target="_blank" rel="noopener noreferrer"><img src="/icons/huggingface.svg" alt="" aria-hidden="true">Model</a>
             </div>
           </div>
-        </div>
-        <div class="pub-item anim-fade-up">
-          <a class="pub-thumb-link" href="https://arxiv.org/abs/2607.27581" target="_blank" rel="noopener noreferrer" aria-label="Open the MUGEN paper page">
-            <img class="pub-thumb" src="/images/MUGEN.png" alt="MUGEN framework thumbnail">
-          </a>
+        </article>
+        <article class="pub-card anim-fade-up">
+          <button class="pub-figure" type="button" data-lightbox-src="/images/MUGEN.png" data-lightbox-title="MUGEN: A Unified Framework for Efficient Motion Understanding and Generation" aria-label="Enlarge figure: MUGEN: A Unified Framework for Efficient Motion Understanding and Generation">
+            <img src="/images/MUGEN.png" alt="MUGEN framework figure" loading="lazy" decoding="async">
+            <span class="pub-figure-zoom"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zm2.5-4h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg></span>
+          </button>
           <div class="pub-body">
-            <div class="pub-title"><a href="https://jye16.github.io/mugen-page" target="_blank" rel="noopener noreferrer">MUGEN: A Unified Framework for Efficient Motion Understanding and Generation</a></div>
-            <div class="pub-authors"><span class="me">Z. Ye</span>, Y. Jin, B. Wei, B. Li, Y. Wu, F. Li, S. Gao, X. Liu</div>
-            <div class="pub-venue">arXiv:2607.27581 (2026)</div>
-            <div class="pub-links">
-              <span class="pub-tag pub-tag-preprint">arXiv Available</span>
-              <a class="pub-icon-link pub-icon-link-github" href="https://github.com/JYe16/MUGEN" target="_blank" rel="noopener noreferrer" aria-label="MUGEN on GitHub" title="GitHub">
-                <img src="/icons/github.svg?v=3" width="18" height="18" alt="" aria-hidden="true">
-              </a>
-              <a class="pub-icon-link pub-icon-link-hf" href="https://huggingface.co/zy22b/MUGEN" target="_blank" rel="noopener noreferrer" aria-label="MUGEN on Hugging Face" title="Hugging Face">
-                <img src="/icons/huggingface.svg" width="20" height="20" alt="" aria-hidden="true">
-              </a>
+            <div class="pub-meta">
+              <span class="pub-chip pub-chip-preprint">arXiv Available</span>
+            </div>
+            <h3 class="pub-title"><a href="https://jye16.github.io/mugen-page" target="_blank" rel="noopener noreferrer">MUGEN: A Unified Framework for Efficient Motion Understanding and Generation</a></h3>
+            <p class="pub-authors"><span class="me">Z. Ye</span>, Y. Jin, B. Wei, B. Li, Y. Wu, F. Li, S. Gao, X. Liu</p>
+            <p class="pub-venue">arXiv:2607.27581 (2026)</p>
+            <div class="pub-actions">
+              <a class="pub-btn" href="https://jye16.github.io/mugen-page" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm6.93 6h-2.95a15.6 15.6 0 00-1.38-3.56A8.03 8.03 0 0118.93 8zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14A7.9 7.9 0 014 12c0-.69.1-1.36.26-2h3.38a16.5 16.5 0 000 4H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56A8.03 8.03 0 015.08 16zm2.95-8H5.08a8.03 8.03 0 014.33-3.56A15.6 15.6 0 008.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66a14.7 14.7 0 010-4h4.68a14.7 14.7 0 010 4zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 01-4.33 3.56zM16.36 14a16.5 16.5 0 000-4h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/></svg>Project Page</a>
+              <a class="pub-btn" href="https://arxiv.org/abs/2607.27581" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v2H4V4zm0 7h16v2H4v-2zm0 7h10v2H4v-2z"/></svg>arXiv</a>
+              <a class="pub-btn pub-btn-github" href="https://github.com/JYe16/MUGEN" target="_blank" rel="noopener noreferrer"><img src="/icons/github.svg?v=3" alt="" aria-hidden="true">Code</a>
+              <a class="pub-btn" href="https://huggingface.co/zy22b/MUGEN" target="_blank" rel="noopener noreferrer"><img src="/icons/huggingface.svg" alt="" aria-hidden="true">Model</a>
             </div>
           </div>
-        </div>
-        <div class="pub-item anim-fade-up">
-          <a class="pub-thumb-link" href="https://www.computer.org/csdl/proceedings-article/sp/2026/606500b617/2bojwh1qN2w" target="_blank" rel="noopener noreferrer" aria-label="Open the 2FiA paper page">
-            <img class="pub-thumb" src="/images/2FiA.png" alt="2FiA thumbnail">
-          </a>
+        </article>
+        <article class="pub-card anim-fade-up">
+          <button class="pub-figure" type="button" data-lightbox-src="/images/2FiA.png" data-lightbox-title="2FiA: Towards WiFi Sensing-Based Authentication with Unique Biometrics" aria-label="Enlarge figure: 2FiA: Towards WiFi Sensing-Based Authentication with Unique Biometrics">
+            <img src="/images/2FiA.png" alt="2FiA respiration and heartbeat signal extraction figure" loading="lazy" decoding="async">
+            <span class="pub-figure-zoom"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zm2.5-4h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg></span>
+          </button>
           <div class="pub-body">
-            <div class="pub-title"><a href="https://www.computer.org/csdl/proceedings-article/sp/2026/606500b617/2bojwh1qN2w" target="_blank" rel="noopener noreferrer">2FiA: Towards WiFi Sensing-Based Authentication with Unique Biometrics</a></div>
-            <div class="pub-authors">B. Li, <span class="me">Z. Ye (Co-First Author)</span>, W. Yu, Y. Tang, X. Liu</div>
-            <div class="pub-venue">The 47th IEEE Symposium on Security and Privacy (S&amp;P) 2026</div>
-            <div class="pub-links">
-              <span class="pub-tag pub-tag-published">Published</span>
-              <div class="pub-award">Distinguished Artifact Award</div>
+            <div class="pub-meta">
+              <span class="pub-chip pub-chip-published">Published</span> <span class="pub-chip pub-chip-award"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3h-2V2H7v1H5a2 2 0 00-2 2v2a4 4 0 004 4h.1A5 5 0 0011 14.9V17H8v2h8v-2h-3v-2.1A5 5 0 0016.9 11H17a4 4 0 004-4V5a2 2 0 00-2-2zM5 7V5h2v4a2 2 0 01-2-2zm14 0a2 2 0 01-2 2V5h2v2z"/></svg>Distinguished Artifact Award</span>
+            </div>
+            <h3 class="pub-title"><a href="https://www.computer.org/csdl/proceedings-article/sp/2026/606500b617/2bojwh1qN2w" target="_blank" rel="noopener noreferrer">2FiA: Towards WiFi Sensing-Based Authentication with Unique Biometrics</a></h3>
+            <p class="pub-authors">B. Li, <span class="me">Z. Ye (Co-First Author)</span>, W. Yu, Y. Tang, X. Liu</p>
+            <p class="pub-venue">The 47th IEEE Symposium on Security and Privacy (S&amp;P) 2026</p>
+            <div class="pub-actions">
+              <a class="pub-btn" href="https://www.computer.org/csdl/proceedings-article/sp/2026/606500b617/2bojwh1qN2w" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 7V3.5L18.5 9H13zM8 12h8v2H8v-2zm0 4h8v2H8v-2z"/></svg>Paper</a>
             </div>
           </div>
-        </div>
-        <div class="pub-item anim-fade-up">
-          <a class="pub-thumb-link" href="https://ieeexplore.ieee.org/abstract/document/11557074" target="_blank" rel="noopener noreferrer" aria-label="Open the ARiSE paper page">
-            <img class="pub-thumb" src="/images/ARiSE.png" alt="ARiSE thumbnail">
-          </a>
+        </article>
+        <article class="pub-card anim-fade-up">
+          <button class="pub-figure" type="button" data-lightbox-src="/images/ARiSE.png" data-lightbox-title="ARiSE: Efficient Mesh-Based Action Recognition from Wi-Fi Sensing on Edge Devices" aria-label="Enlarge figure: ARiSE: Efficient Mesh-Based Action Recognition from Wi-Fi Sensing on Edge Devices">
+            <img src="/images/ARiSE.png" alt="ARiSE mesh-based action recognition pipeline figure" loading="lazy" decoding="async">
+            <span class="pub-figure-zoom"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zm2.5-4h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg></span>
+          </button>
           <div class="pub-body">
-            <div class="pub-title"><a href="https://ieeexplore.ieee.org/abstract/document/11557074" target="_blank" rel="noopener noreferrer">ARiSE: Efficient Mesh-Based Action Recognition from Wi-Fi Sensing on Edge Devices</a></div>
-            <div class="pub-authors"><span class="me">Z. Ye</span>, S. Li, B. Li, Y. Ren, B. Mei, S. Gao, X. Liu</div>
-            <div class="pub-venue">The 20th IEEE International Conference on Automatic Face and Gesture Recognition (FG) 2026</div>
-            <div class="pub-links">
-              <span class="pub-tag pub-tag-published">Published</span>
+            <div class="pub-meta">
+              <span class="pub-chip pub-chip-published">Published</span>
+            </div>
+            <h3 class="pub-title"><a href="https://ieeexplore.ieee.org/abstract/document/11557074" target="_blank" rel="noopener noreferrer">ARiSE: Efficient Mesh-Based Action Recognition from Wi-Fi Sensing on Edge Devices</a></h3>
+            <p class="pub-authors"><span class="me">Z. Ye</span>, S. Li, B. Li, Y. Ren, B. Mei, S. Gao, X. Liu</p>
+            <p class="pub-venue">The 20th IEEE International Conference on Automatic Face and Gesture Recognition (FG) 2026</p>
+            <div class="pub-actions">
+              <a class="pub-btn" href="https://ieeexplore.ieee.org/abstract/document/11557074" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 7V3.5L18.5 9H13zM8 12h8v2H8v-2zm0 4h8v2H8v-2z"/></svg>Paper</a>
             </div>
           </div>
-        </div>
-        <div class="pub-item anim-fade-up">
-          <img class="pub-thumb" src="/images/Fresco.png" alt="Fresco thumbnail">
+        </article>
+        <article class="pub-card anim-fade-up">
+          <button class="pub-figure" type="button" data-lightbox-src="/images/Fresco.png" data-lightbox-title="Fresco: A Permissioned Blockchain Framework for Securing Model Context Protocol" aria-label="Enlarge figure: Fresco: A Permissioned Blockchain Framework for Securing Model Context Protocol">
+            <img src="/images/Fresco.png" alt="Fresco permissioned blockchain framework figure" loading="lazy" decoding="async">
+            <span class="pub-figure-zoom"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zm2.5-4h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg></span>
+          </button>
           <div class="pub-body">
-            <div class="pub-title">Fresco: A Permissioned Blockchain Framework for Securing Model Context Protocol</div>
-            <div class="pub-authors"><span class="me">Z. Ye</span>, Y. Wu, S. Sheng, P. Nguyen, Y. Ren, B. Wei, Y. Yesha, X. Liu</div>
-            <div class="pub-venue">The 35th International Conference on Computer Communications and Networks (ICCCN) 2026</div>
-            <div class="pub-links">
-              <span class="pub-tag pub-tag-accepted">Accepted</span>
+            <div class="pub-meta">
+              <span class="pub-chip pub-chip-accepted">Accepted</span>
+            </div>
+            <h3 class="pub-title">Fresco: A Permissioned Blockchain Framework for Securing Model Context Protocol</h3>
+            <p class="pub-authors"><span class="me">Z. Ye</span>, Y. Wu, S. Sheng, P. Nguyen, Y. Ren, B. Wei, Y. Yesha, X. Liu</p>
+            <p class="pub-venue">The 35th International Conference on Computer Communications and Networks (ICCCN) 2026</p>
+          </div>
+        </article>
+        <article class="pub-card anim-fade-up">
+          <button class="pub-figure" type="button" data-lightbox-src="/images/BFMScan.png" data-lightbox-title="BFMScan: Enabling Explicit Angle-Resolved Sensing via Beamforming Feedback Matrix" aria-label="Enlarge figure: BFMScan: Enabling Explicit Angle-Resolved Sensing via Beamforming Feedback Matrix">
+            <img src="/images/BFMScan.png" alt="BFMScan angle-resolved Wi-Fi sensing illustration" loading="lazy" decoding="async">
+            <span class="pub-figure-zoom"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zm2.5-4h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg></span>
+          </button>
+          <div class="pub-body">
+            <div class="pub-meta">
+              <span class="pub-chip pub-chip-published">Published</span>
+            </div>
+            <h3 class="pub-title"><a href="https://doi.org/10.1145/3832009" target="_blank" rel="noopener noreferrer">BFMScan: Enabling Explicit Angle-Resolved Sensing via Beamforming Feedback Matrix</a></h3>
+            <p class="pub-authors">B. Li, Z. Liu, <span class="me">Z. Ye</span>, W. Yu, X. Liu</p>
+            <p class="pub-venue">ACM International Joint Conference on Pervasive and Ubiquitous Computing (UbiComp) 2026</p>
+            <div class="pub-actions">
+              <a class="pub-btn" href="https://doi.org/10.1145/3832009" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 7V3.5L18.5 9H13zM8 12h8v2H8v-2zm0 4h8v2H8v-2z"/></svg>Paper</a>
             </div>
           </div>
-        </div>
-        <div class="pub-item anim-fade-up">
-          <a class="pub-thumb-link" href="https://doi.org/10.1145/3832009" target="_blank" rel="noopener noreferrer" aria-label="Open the BFMScan paper page">
-            <img class="pub-thumb" src="/images/BFMScan.png" alt="BFMScan angle-resolved Wi-Fi sensing illustration">
-          </a>
+        </article>
+        <article class="pub-card anim-fade-up">
+          <button class="pub-figure" type="button" data-lightbox-src="/images/HyperEdit.png" data-lightbox-title="HyperEdit: Unlocking Instruction-based Text Editing in LLMs via Hypernetworks" aria-label="Enlarge figure: HyperEdit: Unlocking Instruction-based Text Editing in LLMs via Hypernetworks">
+            <img src="/images/HyperEdit.png" alt="HyperEdit hypernetwork text editing figure" loading="lazy" decoding="async">
+            <span class="pub-figure-zoom"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zm2.5-4h-2v2H9v-2H7V9h2V7h1v2h2v1z"/></svg></span>
+          </button>
           <div class="pub-body">
-            <div class="pub-title"><a href="https://doi.org/10.1145/3832009" target="_blank" rel="noopener noreferrer">BFMScan: Enabling Explicit Angle-Resolved Sensing via Beamforming Feedback Matrix</a></div>
-            <div class="pub-authors">B. Li, Z. Liu, <span class="me">Z. Ye</span>, W. Yu, X. Liu</div>
-            <div class="pub-venue">ACM International Joint Conference on Pervasive and Ubiquitous Computing (UbiComp) 2026</div>
-            <div class="pub-links">
-              <span class="pub-tag pub-tag-published">Published</span>
+            <div class="pub-meta">
+              <span class="pub-chip pub-chip-published">Published</span>
+            </div>
+            <h3 class="pub-title"><a href="https://arxiv.org/abs/2512.12544" target="_blank" rel="noopener noreferrer">HyperEdit: Unlocking Instruction-based Text Editing in LLMs via Hypernetworks</a></h3>
+            <p class="pub-authors">Y. Zeng, J. Cao, Z. Li, W. Yu, <span class="me">Z. Ye</span>, D. Xiang, T. Hua, X. Liu, S. Gao, T. Yu</p>
+            <p class="pub-venue">Findings of the 64th Annual Meeting of the Association for Computational Linguistics (ACL Findings) 2026</p>
+            <div class="pub-actions">
+              <a class="pub-btn" href="https://arxiv.org/abs/2512.12544" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v2H4V4zm0 7h16v2H4v-2zm0 7h10v2H4v-2z"/></svg>arXiv</a>
             </div>
           </div>
-        </div>
-        <div class="pub-item anim-fade-up">
-          <a class="pub-thumb-link" href="https://arxiv.org/abs/2512.12544" target="_blank" rel="noopener noreferrer" aria-label="Open the HyperEdit paper page">
-            <img class="pub-thumb" src="/images/HyperEdit.png" alt="HyperEdit thumbnail">
-          </a>
-          <div class="pub-body">
-            <div class="pub-title"><a href="https://arxiv.org/abs/2512.12544" target="_blank" rel="noopener noreferrer">HyperEdit: Unlocking Instruction-based Text Editing in LLMs via Hypernetworks</a></div>
-            <div class="pub-authors">Y. Zeng, J. Cao, Z. Li, W. Yu, <span class="me">Z. Ye</span>, D. Xiang, T. Hua, X. Liu, S. Gao, T. Yu</div>
-            <div class="pub-venue">Findings of the 64th Annual Meeting of the Association for Computational Linguistics (ACL Findings) 2026</div>
-            <div class="pub-links">
-              <span class="pub-tag pub-tag-published">Published</span>
-            </div>
-          </div>
-        </div>
+        </article>
       </div>
     </section>
 
@@ -466,6 +486,28 @@
     <p>&copy; 2022–2026 Zhankai Ye. Built with care.</p>
     <p><a href="https://www.flaticon.com/free-icons/computer" title="computer icons">Computer icons created by Freepik - Flaticon</a></p>
   </footer>
+
+  <!-- Figure lightbox -->
+  <dialog id="lightbox" class="lightbox" aria-label="Figure preview">
+    <div class="lightbox-panel">
+      <div class="lightbox-stage">
+        <button class="lightbox-btn lightbox-close" type="button" data-lightbox-close aria-label="Close">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+        <button class="lightbox-btn lightbox-nav lightbox-prev" type="button" data-lightbox-prev aria-label="Previous figure">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+        <img class="lightbox-img" id="lightbox-img" src="" alt="">
+        <button class="lightbox-btn lightbox-nav lightbox-next" type="button" data-lightbox-next aria-label="Next figure">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+        </button>
+      </div>
+      <div class="lightbox-caption">
+        <span class="lightbox-title" id="lightbox-title"></span>
+        <span class="lightbox-count" id="lightbox-count"></span>
+      </div>
+    </div>
+  </dialog>
 
 </body>
 </html>

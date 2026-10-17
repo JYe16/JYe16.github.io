@@ -252,6 +252,68 @@
     });
   }
 
+  // --- Figure Lightbox ---
+  function initLightbox() {
+    const dialog = document.getElementById('lightbox');
+    const triggers = Array.prototype.slice.call(document.querySelectorAll('[data-lightbox-src]'));
+    if (!dialog || !triggers.length || typeof dialog.showModal !== 'function') return;
+
+    const img = document.getElementById('lightbox-img');
+    const title = document.getElementById('lightbox-title');
+    const count = document.getElementById('lightbox-count');
+    const prevBtn = dialog.querySelector('[data-lightbox-prev]');
+    const nextBtn = dialog.querySelector('[data-lightbox-next]');
+    let index = 0;
+    let lastTrigger = null;
+
+    function show(i) {
+      index = (i + triggers.length) % triggers.length;
+      const t = triggers[index];
+      img.src = t.getAttribute('data-lightbox-src');
+      img.alt = t.querySelector('img') ? t.querySelector('img').alt : '';
+      title.textContent = t.getAttribute('data-lightbox-title') || '';
+      count.textContent = (index + 1) + ' / ' + triggers.length;
+      const single = triggers.length < 2;
+      prevBtn.hidden = single;
+      nextBtn.hidden = single;
+    }
+
+    function open(i, trigger) {
+      lastTrigger = trigger || null;
+      show(i);
+      dialog.showModal();
+      document.body.classList.add('lightbox-open');
+    }
+
+    function close() {
+      if (dialog.open) dialog.close();
+    }
+
+    triggers.forEach(function (t, i) {
+      t.addEventListener('click', function () { open(i, t); });
+    });
+
+    prevBtn.addEventListener('click', function () { show(index - 1); });
+    nextBtn.addEventListener('click', function () { show(index + 1); });
+    dialog.querySelector('[data-lightbox-close]').addEventListener('click', close);
+
+    // Click on the backdrop (outside the panel) closes
+    dialog.addEventListener('click', function (e) {
+      if (!e.target.closest('.lightbox-panel') || e.target.classList.contains('lightbox-stage')) close();
+    });
+
+    dialog.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); show(index - 1); }
+      else if (e.key === 'ArrowRight') { e.preventDefault(); show(index + 1); }
+    });
+
+    dialog.addEventListener('close', function () {
+      document.body.classList.remove('lightbox-open');
+      img.removeAttribute('src');
+      if (lastTrigger) lastTrigger.focus({ preventScroll: true });
+    });
+  }
+
   // --- Init ---
   document.addEventListener('DOMContentLoaded', function () {
     initTheme();
@@ -261,6 +323,7 @@
     initSmoothScroll();
     initNavHighlight();
     initNewsToggle();
+    initLightbox();
   });
 
   // Apply theme immediately to prevent flash
