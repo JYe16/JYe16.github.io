@@ -229,11 +229,9 @@ section[id] { scroll-margin-top: calc(var(--headerbar-h) + 20px); }
 .affils { margin: 8px auto 26px; font-size: 15px; color: var(--ink-3); }
 .affils span { white-space: nowrap; margin: 0 .6em; }
 
-.hero .tagline { font-size: 27px; font-weight: 700; letter-spacing: -.015em; color: var(--ink); margin-bottom: 8px; }
+.hero .tagline { font-size: 27px; font-weight: 700; letter-spacing: -.015em; color: var(--ink); margin-bottom: 30px; }
 .hero .tagline .a { color: var(--cobalt); }
 .hero .tagline .b { color: var(--cinnabar); box-shadow: inset 0 -.34em 0 var(--cinnabar-soft); }
-
-.hero .venue { font-size: 15px; color: var(--ink-3); margin-bottom: 30px; }
 
 .hero-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 .hero-links a {
